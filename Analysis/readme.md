@@ -1,7 +1,5 @@
 1. RV_preProcessing.bonsai
  (batch)  Python Script:
-	- Generate folder list
-	- run workflow on IR.avi
+	- Generate folder list for all session folders that need to be processed.
+	- Run "RV_batchPreProcessing.py"
 
-
-2. Python
