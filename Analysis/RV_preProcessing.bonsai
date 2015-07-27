@@ -1,18 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.1.2">
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q2="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns:q1="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q3="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns:q2="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:q1="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="Source">
         <PropertyMappings>
           <PropertyMapping name="FileName" selector="Source1" />
-          <PropertyMapping name="StartPosition" selector="Source2" />
         </PropertyMappings>
         <Generator xsi:type="q1:FileCapture">
-          <q1:FileName>C:\Users\Adam\Dropbox\kampff lab\programming\Python\Videogame Analysis\clips2\Clip00.avi</q1:FileName>
-          <q1:PlaybackRate>100</q1:PlaybackRate>
+          <q1:FileName>clip_ir\Clip18.avi</q1:FileName>
+          <q1:PlaybackRate>-1</q1:PlaybackRate>
           <q1:StartPosition>0</q1:StartPosition>
           <q1:PositionUnits>Frames</q1:PositionUnits>
-          <q1:Loop>true</q1:Loop>
+          <q1:Loop>false</q1:Loop>
           <q1:Playing>true</q1:Playing>
         </Generator>
       </Expression>
@@ -32,17 +31,17 @@
         <PropertyMappings />
         <Combinator xsi:type="q1:Undistort">
           <q1:FocalLength>
-            <q1:X>100</q1:X>
-            <q1:Y>100</q1:Y>
+            <q1:X>500</q1:X>
+            <q1:Y>500</q1:Y>
           </q1:FocalLength>
           <q1:PrincipalPoint>
-            <q1:X>664</q1:X>
-            <q1:Y>350</q1:Y>
+            <q1:X>332</q1:X>
+            <q1:Y>175</q1:Y>
           </q1:PrincipalPoint>
           <q1:RadialDistortion>
-            <q1:X>-0.0022</q1:X>
+            <q1:X>-0.25</q1:X>
             <q1:Y>0</q1:Y>
-            <q1:Z>0</q1:Z>
+            <q1:Z>0.02</q1:Z>
           </q1:RadialDistortion>
           <q1:TangentialDistortion>
             <q1:X>0</q1:X>
@@ -50,46 +49,14 @@
           </q1:TangentialDistortion>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <PropertyMappings />
-        <Combinator xsi:type="q1:WarpPerspective">
-          <q1:Source>
-            <q1:Point2f>
-              <q1:X>35.9666672</q1:X>
-              <q1:Y>82.7957</q1:Y>
-            </q1:Point2f>
-            <q1:Point2f>
-              <q1:X>29.51111</q1:X>
-              <q1:Y>644.802856</q1:Y>
-            </q1:Point2f>
-            <q1:Point2f>
-              <q1:X>1275.43335</q1:X>
-              <q1:Y>631.421753</q1:Y>
-            </q1:Point2f>
-            <q1:Point2f>
-              <q1:X>1272.66663</q1:X>
-              <q1:Y>97.0131454</q1:Y>
-            </q1:Point2f>
-          </q1:Source>
-          <q1:Destination>
-            <q1:Point2f>
-              <q1:X>0</q1:X>
-              <q1:Y>0</q1:Y>
-            </q1:Point2f>
-            <q1:Point2f>
-              <q1:X>0</q1:X>
-              <q1:Y>700</q1:Y>
-            </q1:Point2f>
-            <q1:Point2f>
-              <q1:X>1328</q1:X>
-              <q1:Y>700</q1:Y>
-            </q1:Point2f>
-            <q1:Point2f>
-              <q1:X>1328</q1:X>
-              <q1:Y>0</q1:Y>
-            </q1:Point2f>
-          </q1:Destination>
-        </Combinator>
+      <Expression xsi:type="q2:CsvWriter">
+        <q2:PropertyMappings />
+        <q2:FileName>tail_extremes.csv</q2:FileName>
+        <q2:Append>false</q2:Append>
+        <q2:Overwrite>true</q2:Overwrite>
+        <q2:Suffix>None</q2:Suffix>
+        <q2:IncludeHeader>false</q2:IncludeHeader>
+        <q2:Selector>Source.Item1,Source.Item2</q2:Selector>
       </Expression>
       <Expression xsi:type="Combinator">
         <PropertyMappings />
@@ -126,7 +93,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <PropertyMappings />
-        <Combinator xsi:type="q2:AbsoluteDifference" />
+        <Combinator xsi:type="q3:AbsoluteDifference" />
       </Expression>
       <Expression xsi:type="Combinator">
         <PropertyMappings />
@@ -160,18 +127,7 @@
       <Expression xsi:type="ExternalizedPropertyOfStringFileCapture">
         <MemberName>FileName</MemberName>
         <Name>FileName</Name>
-        <Value>C:\Users\Adam\Dropbox\kampff lab\programming\Python\Videogame Analysis\clips2\Clip00.avi</Value>
-      </Expression>
-      <Expression xsi:type="ExternalizedPropertyOfDoubleFileCapture">
-        <MemberName>StartPosition</MemberName>
-        <Name>StartPosition</Name>
-        <Value>0</Value>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <PropertyMappings />
-        <Combinator xsi:type="q1:BinaryRegionExtremes">
-          <q1:Method>Radial</q1:Method>
-        </Combinator>
+        <Value>Clip12.avi</Value>
       </Expression>
       <Expression xsi:type="Combinator">
         <PropertyMappings />
@@ -185,11 +141,82 @@
           <q1:Method>MajorAxis</q1:Method>
         </Combinator>
       </Expression>
+      <Expression xsi:type="q2:CsvWriter">
+        <q2:PropertyMappings />
+        <q2:FileName>body_extremes.csv</q2:FileName>
+        <q2:Append>false</q2:Append>
+        <q2:Overwrite>true</q2:Overwrite>
+        <q2:Suffix>None</q2:Suffix>
+        <q2:IncludeHeader>false</q2:IncludeHeader>
+        <q2:Selector>Source.Item1,Source.Item2</q2:Selector>
+      </Expression>
       <Expression xsi:type="Combinator">
         <PropertyMappings />
-        <Combinator xsi:type="q1:ConvertColor">
-          <q1:Conversion>Gray2Bgr</q1:Conversion>
+        <Combinator xsi:type="q1:WarpPerspective">
+          <q1:Source>
+            <q1:Point2f>
+              <q1:X>17.9833336</q1:X>
+              <q1:Y>34.7590942</q1:Y>
+            </q1:Point2f>
+            <q1:Point2f>
+              <q1:X>21.0958328</q1:X>
+              <q1:Y>335.545715</q1:Y>
+            </q1:Point2f>
+            <q1:Point2f>
+              <q1:X>633.56665</q1:X>
+              <q1:Y>327.974426</q1:Y>
+            </q1:Point2f>
+            <q1:Point2f>
+              <q1:X>633.56665</q1:X>
+              <q1:Y>37.51229</q1:Y>
+            </q1:Point2f>
+          </q1:Source>
+          <q1:Destination>
+            <q1:Point2f>
+              <q1:X>0</q1:X>
+              <q1:Y>0</q1:Y>
+            </q1:Point2f>
+            <q1:Point2f>
+              <q1:X>0</q1:X>
+              <q1:Y>350</q1:Y>
+            </q1:Point2f>
+            <q1:Point2f>
+              <q1:X>664</q1:X>
+              <q1:Y>350</q1:Y>
+            </q1:Point2f>
+            <q1:Point2f>
+              <q1:X>664</q1:X>
+              <q1:Y>0</q1:Y>
+            </q1:Point2f>
+          </q1:Destination>
         </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <PropertyMappings />
+        <Combinator xsi:type="q1:Resize">
+          <q1:Size>
+            <q1:Width>664</q1:Width>
+            <q1:Height>350</q1:Height>
+          </q1:Size>
+          <q1:Interpolation>Linear</q1:Interpolation>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="q2:CsvWriter">
+        <q2:PropertyMappings />
+        <q2:FileName>tail.csv</q2:FileName>
+        <q2:Append>false</q2:Append>
+        <q2:Overwrite>true</q2:Overwrite>
+        <q2:Suffix>None</q2:Suffix>
+        <q2:IncludeHeader>false</q2:IncludeHeader>
+        <q2:Selector>Source.Centroid,Source.Orientation,Source.MajorAxisLength,Source.MinorAxisLength,Source.Area</q2:Selector>
+      </Expression>
+      <Expression xsi:type="q2:CsvWriter">
+        <q2:PropertyMappings />
+        <q2:FileName>body.csv</q2:FileName>
+        <q2:Append>false</q2:Append>
+        <q2:Overwrite>true</q2:Overwrite>
+        <q2:Suffix>None</q2:Suffix>
+        <q2:IncludeHeader>false</q2:IncludeHeader>
       </Expression>
     </Nodes>
     <Edges>
@@ -210,22 +237,12 @@
       </Edge>
       <Edge>
         <From>2</From>
-        <To>3</To>
+        <To>19</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>3</From>
-        <To>4</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>4</From>
-        <To>1</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>4</From>
-        <To>19</To>
+        <To>18</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -270,17 +287,12 @@
       </Edge>
       <Edge>
         <From>12</From>
-        <To>16</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>12</From>
-        <To>18</To>
+        <To>21</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>13</From>
-        <To>17</To>
+        <To>20</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -290,8 +302,33 @@
       </Edge>
       <Edge>
         <From>15</From>
-        <To>0</To>
-        <Label>Source2</Label>
+        <To>4</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>16</From>
+        <To>17</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>18</From>
+        <To>1</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>19</From>
+        <To>3</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>20</From>
+        <To>15</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>21</From>
+        <To>16</To>
+        <Label>Source1</Label>
       </Edge>
     </Edges>
   </Workflow>
@@ -300,7 +337,7 @@
     <Type>Bonsai.Vision.Threshold, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.Grayscale, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.Undistort, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.WarpPerspective, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.IO.CsvWriter, Bonsai.System, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.MorphologicalOperator, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.FindContours, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
@@ -308,8 +345,8 @@
     <Type>Bonsai.Vision.BinaryRegionAnalysis, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.LargestBinaryRegion, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.ExternalizedProperty`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Bonsai.Vision.FileCapture, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], Bonsai.Core, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.ExternalizedProperty`2[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Bonsai.Vision.FileCapture, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], Bonsai.Core, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.BinaryRegionExtremes, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.ConvertColor, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.WarpPerspective, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.Resize, Bonsai.Vision, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
