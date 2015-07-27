@@ -7,7 +7,7 @@
           <PropertyMapping name="FileName" selector="Source1" />
         </PropertyMappings>
         <Generator xsi:type="q1:FileCapture">
-          <q1:FileName>clip_ir\Clip18.avi</q1:FileName>
+          <q1:FileName>C:\Users\Adam\Desktop\Sample\ir.avi</q1:FileName>
           <q1:PlaybackRate>-1</q1:PlaybackRate>
           <q1:StartPosition>0</q1:StartPosition>
           <q1:PositionUnits>Frames</q1:PositionUnits>
@@ -127,7 +127,7 @@
       <Expression xsi:type="ExternalizedPropertyOfStringFileCapture">
         <MemberName>FileName</MemberName>
         <Name>FileName</Name>
-        <Value>Clip12.avi</Value>
+        <Value>C:\Users\Adam\Desktop\Sample\ir.avi</Value>
       </Expression>
       <Expression xsi:type="Combinator">
         <PropertyMappings />
@@ -138,7 +138,7 @@
       <Expression xsi:type="Combinator">
         <PropertyMappings />
         <Combinator xsi:type="q1:BinaryRegionExtremes">
-          <q1:Method>MajorAxis</q1:Method>
+          <q1:Method>Radial</q1:Method>
         </Combinator>
       </Expression>
       <Expression xsi:type="q2:CsvWriter">
