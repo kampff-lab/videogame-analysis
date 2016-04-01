@@ -51,9 +51,9 @@
       </Expression>
       <Expression xsi:type="q2:CsvWriter">
         <q2:PropertyMappings />
-        <q2:FileName>tail_extremes.csv</q2:FileName>
+        <q2:FileName>Analysis/tail_extremes.csv</q2:FileName>
         <q2:Append>false</q2:Append>
-        <q2:Overwrite>true</q2:Overwrite>
+        <q2:Overwrite>false</q2:Overwrite>
         <q2:Suffix>None</q2:Suffix>
         <q2:IncludeHeader>false</q2:IncludeHeader>
         <q2:Selector>Source.Item1,Source.Item2</q2:Selector>
@@ -143,9 +143,9 @@
       </Expression>
       <Expression xsi:type="q2:CsvWriter">
         <q2:PropertyMappings />
-        <q2:FileName>body_extremes.csv</q2:FileName>
+        <q2:FileName>Analysis/body_extremes.csv</q2:FileName>
         <q2:Append>false</q2:Append>
-        <q2:Overwrite>true</q2:Overwrite>
+        <q2:Overwrite>false</q2:Overwrite>
         <q2:Suffix>None</q2:Suffix>
         <q2:IncludeHeader>false</q2:IncludeHeader>
         <q2:Selector>Source.Item1,Source.Item2</q2:Selector>
@@ -203,18 +203,18 @@
       </Expression>
       <Expression xsi:type="q2:CsvWriter">
         <q2:PropertyMappings />
-        <q2:FileName>tail.csv</q2:FileName>
+        <q2:FileName>Analysis/tail.csv</q2:FileName>
         <q2:Append>false</q2:Append>
-        <q2:Overwrite>true</q2:Overwrite>
+        <q2:Overwrite>false</q2:Overwrite>
         <q2:Suffix>None</q2:Suffix>
         <q2:IncludeHeader>false</q2:IncludeHeader>
         <q2:Selector>Source.Centroid,Source.Orientation,Source.MajorAxisLength,Source.MinorAxisLength,Source.Area</q2:Selector>
       </Expression>
       <Expression xsi:type="q2:CsvWriter">
         <q2:PropertyMappings />
-        <q2:FileName>body.csv</q2:FileName>
+        <q2:FileName>Analysis/body.csv</q2:FileName>
         <q2:Append>false</q2:Append>
-        <q2:Overwrite>true</q2:Overwrite>
+        <q2:Overwrite>false</q2:Overwrite>
         <q2:Suffix>None</q2:Suffix>
         <q2:IncludeHeader>false</q2:IncludeHeader>
       </Expression>
